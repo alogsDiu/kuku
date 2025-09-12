@@ -1,27 +1,23 @@
 import { NextRequest, NextResponse } from 'next/server'
-
-// Simple in-memory storage (replace with database in production)
-let users: any[] = [
-  { id: "1", email: "user@example.com", password: "password123" },
-  { id: "2", email: "test@example.com", password: "test123" }
-]
+import { prisma } from '@/libs/prisma'
+import bcrypt from 'bcrypt'
 
 export async function POST(request: NextRequest) {
   try {
-    const { email, password } = await request.json()
+    const { email, password, wallet } = await request.json()
 
-    // Validation
-    if (!email || !password) {
+    // Validation - all fields are required
+    if (!email || !password || !wallet) {
       return NextResponse.json(
-        { error: 'Email and password are required' },
+        { error: 'Email, password, and wallet are required' },
         { status: 400 }
       )
     }
     
-    // ОТСЮДА ВНИЗ (НУ И ВЫШЕ ТАМ УБРАТЬ)
-
     // Check if user already exists
-    const existingUser = users.find(user => user.email === email)
+    const existingUser = await prisma.user.findUnique({
+      where: { email }
+    })
     
     if (existingUser) {
       return NextResponse.json(
@@ -30,26 +26,33 @@ export async function POST(request: NextRequest) {
       )
     }
 
-    // In production, you would:
-    // 1. Hash the password (using bcrypt)
-    // 2. Store in database
-    // 3. Send verification email
+    // Hash password
+    const hashedPassword = await bcrypt.hash(password, 12)
 
-    // Create new user
-    const newUser = {
-      id: (users.length + 1).toString(),
-      email,
-      password, // In real app, store hashed password!
-    }
+    // Create user in database (wallet is required and stored)
+    const user = await prisma.user.create({
+      data: {
+        email,
+        password: hashedPassword,
+        wallet, // Required wallet
+        emailVerified: new Date(),
+      }
+    })
 
-    users.push(newUser)
+    // Return user without password AND without wallet
+    const { password: _, wallet: __, ...userWithoutSensitiveData } = user
 
     return NextResponse.json(
-      { message: 'User created successfully', userId: newUser.id },
+      { 
+        success: true, 
+        message: 'User created successfully', 
+        user: userWithoutSensitiveData // Only includes id, email, timestamps
+      },
       { status: 201 }
     )
 
   } catch (error) {
+    console.error('Registration error:', error)
     return NextResponse.json(
       { error: 'Internal server error' },
       { status: 500 }

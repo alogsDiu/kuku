@@ -1,5 +1,7 @@
 import NextAuth from 'next-auth'
 import CredentialsProvider from 'next-auth/providers/credentials'
+import { prisma } from '@/libs/prisma'
+import bcrypt from 'bcrypt'
 
 const handler = NextAuth({
   providers: [
@@ -10,21 +12,34 @@ const handler = NextAuth({
         password: { label: "Password", type: "password" }
       },
       async authorize(credentials) {
-        // ТУТ НАША ЛОГИКА 
-        // Simple hardcoded users - replace with database
-        const users = [
-          { id: "1", email: "user@example.com", password: "password123" },
-          { id: "2", email: "test@example.com", password: "test123" }
-        ]
+        if (!credentials?.email || !credentials?.password) {
+          return null
+        }
 
-        const user = users.find(
-          (u) => u.email === credentials?.email && u.password === credentials?.password
+        // Find user in database (wallet is stored but not used in auth)
+        const user = await prisma.user.findUnique({
+          where: { email: credentials.email }
+        })
+
+        if (!user || !user.password) {
+          return null
+        }
+
+        const isPasswordValid = await bcrypt.compare(
+          credentials.password,
+          user.password
         )
 
-        if (user) {
-          return { id: user.id, email: user.email }
+        if (!isPasswordValid) {
+          return null
         }
-        return null
+
+        // Return user object WITHOUT wallet
+        return {
+          id: user.id,
+          email: user.email,
+          // Wallet is NOT included here
+        }
       }
     })
   ],
@@ -35,12 +50,14 @@ const handler = NextAuth({
     async jwt({ token, user }) {
       if (user) {
         token.id = user.id
+        // Wallet is NOT stored in JWT token
       }
       return token
     },
     async session({ session, token }) {
       if (token && session.user) {
         session.user.id = token.id as string
+        // Wallet is NOT added to session
       }
       return session
     }

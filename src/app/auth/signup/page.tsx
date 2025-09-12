@@ -7,6 +7,7 @@ import styles from './SignUp.module.css'
 
 export default function SignUp() {
   const [email, setEmail] = useState('')
+  const [wallet, setWallet] = useState('')
   const [password, setPassword] = useState('')
   const [confirmPassword, setConfirmPassword] = useState('')
   const [error, setError] = useState('')
@@ -37,7 +38,7 @@ export default function SignUp() {
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ email, password }),
+        body: JSON.stringify({ email, password, wallet}),
       })
 
       const data = await response.json()
@@ -85,6 +86,21 @@ export default function SignUp() {
                 placeholder="Enter your email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
+              />
+            </div>
+            <div className={styles.inputGroup}>
+              <label htmlFor="email" className={styles.label}>
+                Wallet
+              </label>
+              <input
+                id="wallet"
+                name="wallet"
+                type="wallet"
+                required
+                className={styles.input}
+                placeholder="Enter your wallet"
+                value={wallet}
+                onChange={(e) => setWallet(e.target.value)}
               />
             </div>
             <div className={styles.inputGroup}>

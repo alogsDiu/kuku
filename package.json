@@ -6,12 +6,23 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
+    "db:up": "docker compose up -d",
+    "db:down": "docker compose down",
+    "db:init": "node scripts/init-db.js",
+    "db:reset": "npm run db:down && npm run db:up && sleep 5 && npx prisma db push && sleep 2 && npm run db:init",
+    "db:studio": "npx prisma studio",
+    "db:generate": "npx prisma generate",
+    "db:push": "npx prisma db push",
+    "db:migrate": "npx prisma migrate dev --name",
     "lint": "eslint"
   },
   "dependencies": {
+    "@prisma/client": "^6.16.1",
+    "@types/pg": "^8.15.5",
     "bcrypt": "^6.0.0",
     "next": "15.5.3",
     "next-auth": "^4.24.11",
+    "pg": "^8.16.3",
     "react": "19.1.0",
     "react-dom": "19.1.0"
   },
@@ -24,6 +35,7 @@
     "@types/react-dom": "^19",
     "eslint": "^9",
     "eslint-config-next": "15.5.3",
+    "prisma": "^6.16.1",
     "typescript": "^5"
   }
 }
