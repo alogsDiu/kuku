@@ -1,0 +1,406 @@
+/*
+ * About Page
+ * A modern, clean, and professional design for a candidate search job.
+ */
+
+/* --- Base Styles and Container --- */
+.container {
+  min-height: 100vh;
+  /* A subtle, soft gradient for a clean look */
+  background: linear-gradient(135deg, #f8f9fa 0%, #eef1f5 100%);
+  font-family: 'Inter', sans-serif; /* Use a professional font */
+  color: #334155;
+  line-height: 1.6;
+}
+
+/* --- Navigation Bar --- */
+.nav {
+  background-color: white;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08); /* Softer, more modern shadow */
+  position: sticky;
+  top: 0;
+  z-index: 50;
+}
+
+.navContainer {
+  max-width: 80rem;
+  margin: 0 auto;
+  padding: 0 1.5rem; /* Increased padding */
+}
+
+.navContent {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 4.5rem; /* Slightly taller nav bar */
+}
+
+.logo {
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: #1e293b;
+  text-decoration: none;
+  letter-spacing: -0.025em;
+  transition: color 0.3s ease;
+}
+
+.logo:hover {
+  color: #1a202c;
+}
+
+.navLinks {
+  display: flex;
+  gap: 1.5rem; /* More space between links */
+}
+
+.navLink {
+  color: #64748b;
+  padding: 0.5rem 0.75rem;
+  font-size: 0.9375rem; /* Slightly larger font */
+  font-weight: 500;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.navLink:hover {
+  color: #4c51bf; /* Professional hover color */
+}
+
+.navButton {
+  background-color: #4c51bf;
+  color: white;
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.5rem; /* Softer corners */
+  font-size: 0.9375rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.navButton:hover {
+  background-color: #3f479e;
+  transform: translateY(-1px);
+}
+
+/* --- Hero Section --- */
+.hero {
+  max-width: 80rem;
+  margin: 0 auto;
+  padding: 6rem 1.5rem; /* Generous padding for visual impact */
+  text-align: center;
+}
+
+.heroTitle {
+  font-size: 3rem; /* Larger, more impactful title */
+  font-weight: 800;
+  color: #1e293b;
+  margin-bottom: 1.5rem;
+  letter-spacing: -0.05em;
+}
+
+.heroSubtitle {
+  font-size: 1.5rem;
+  color: #64748b;
+  margin-bottom: 3rem;
+  max-width: 48rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* --- Mission Section --- */
+.mission {
+  background-color: white;
+  border-radius: 1rem;
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 5px 15px -3px rgba(0, 0, 0, 0.07);
+  padding: 3rem 2rem;
+  margin: 0 1.5rem 4rem 1.5rem;
+}
+
+.missionTitle {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #1e293b;
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+.missionText {
+  font-size: 1.25rem;
+  color: #475569;
+  text-align: center;
+  max-width: 60rem;
+  margin: 0 auto 2rem;
+}
+
+/* --- Features Section --- */
+.features {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  gap: 3rem;
+  margin-top: 2rem;
+}
+
+@media (min-width: 768px) {
+  .features {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.feature {
+  text-align: center;
+}
+
+.featureIcon {
+  background-color: #e0e7ff; /* Lighter, more modern background */
+  width: 4.5rem;
+  height: 4.5rem;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 1.5rem;
+  transition: transform 0.3s ease;
+}
+
+.featureIcon:hover {
+  transform: translateY(-5px);
+}
+
+.featureIcon span {
+  font-size: 1.75rem;
+  color: #4c51bf;
+}
+
+.featureTitle {
+  font-size: 1.375rem;
+  font-weight: 600;
+  color: #1e293b;
+  margin-bottom: 0.5rem;
+}
+
+.featureDescription {
+  color: #64748b;
+  max-width: 25rem;
+  margin: 0 auto;
+}
+
+/* --- General Section Styles --- */
+.section {
+  margin-bottom: 4rem;
+  padding: 0 1.5rem;
+}
+
+.sectionTitle {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #1e293b;
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+/* --- How It Works Section --- */
+.howItWorks {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 3rem;
+}
+
+@media (min-width: 768px) {
+  .howItWorks {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.columnTitle {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #4c51bf;
+  margin-bottom: 1rem;
+}
+
+.list {
+  list-style: none;
+  color: #475569;
+}
+
+.listItem {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 1rem;
+}
+
+.checkmark {
+  color: #10b981;
+  margin-right: 0.75rem;
+  font-size: 1.25rem;
+}
+
+/* --- Solana Section (Refined for better contrast) --- */
+.solana {
+  background-color: #1e3a8a; /* Deeper, richer blue */
+  border-radius: 1rem;
+  padding: 3rem 2rem;
+  margin: 0 1.5rem 4rem 1.5rem;
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.2);
+}
+
+.solanaTitle {
+  font-size: 2rem;
+  font-weight: 700;
+  color: white;
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+.solanaText {
+  color: #dbeafe;
+  text-align: center;
+  margin: 0 auto 2rem;
+  font-size: 1.125rem;
+  max-width: 60rem;
+}
+
+.solanaFeatures {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+}
+
+@media (min-width: 768px) {
+  .solanaFeatures {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.solanaFeature {
+  text-align: center;
+}
+
+.solanaIcon {
+  background-color: #3b82f6; /* Lighter, more vibrant blue */
+  width: 3.5rem;
+  height: 3.5rem;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 1rem;
+}
+
+.solanaIcon span {
+  color: white;
+  font-size: 1.5rem;
+}
+
+.solanaFeatureTitle {
+  color: white;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.solanaFeatureDescription {
+  color: #bfdbfe;
+}
+
+/* --- Call to Action (CTA) --- */
+.cta {
+  text-align: center;
+  padding: 0 1.5rem;
+  margin-bottom: 4rem;
+}
+
+.ctaTitle {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #1e293b;
+  margin-bottom: 1.5rem;
+}
+
+.ctaText {
+  color: #64748b;
+  margin-bottom: 2rem;
+  font-size: 1.25rem;
+  max-width: 48rem;
+  margin: 0 auto 2rem;
+}
+
+.ctaButtons {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  justify-content: center;
+  margin-bottom: 1.5rem;
+}
+
+@media (min-width: 640px) {
+  .ctaButtons {
+    flex-direction: row;
+  }
+}
+
+.ctaButtonPrimary {
+  background-color: #4c51bf;
+  color: white;
+  padding: 1rem 2rem;
+  border-radius: 0.5rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.ctaButtonPrimary:hover {
+  background-color: #3f479e;
+  transform: translateY(-1px);
+}
+
+.ctaButtonSecondary {
+  border: 2px solid #4c51bf;
+  color: #4c51bf;
+  padding: 1rem 2rem;
+  border-radius: 0.5rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.ctaButtonSecondary:hover {
+  background-color: #e0e7ff;
+  color: #3f479e;
+}
+
+.ctaFooter {
+  color: #64748b;
+  font-size: 0.875rem;
+}
+
+.ctaLink {
+  color: #4c51bf;
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.3s ease, text-decoration 0.3s ease;
+}
+
+.ctaLink:hover {
+  color: #3f479e;
+  text-decoration: underline;
+}
+
+/* --- Footer --- */
+.footer {
+  background-color: white;
+  border-top: 1px solid #e5e7eb;
+  padding: 3rem 1.5rem;
+}
+
+.footerContainer {
+  max-width: 80rem;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.footerText {
+  color: #64748b;
+  font-size: 0.875rem;
+}

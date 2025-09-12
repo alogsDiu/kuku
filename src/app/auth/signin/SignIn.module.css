@@ -1,0 +1,151 @@
+/*
+ * Sign-In Page
+ * A modern, clean, and inviting design for a candidate search job.
+ */
+
+/* --- Page Container --- */
+.container {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* A subtle, soft gradient background */
+    background: linear-gradient(135deg, #f0f4f8 0%, #eef1f5 100%);
+    font-family: 'Inter', sans-serif;
+}
+
+/* --- Form Card --- */
+.formContainer {
+    max-width: 28rem;
+    width: 100%;
+    padding: 2.5rem;
+    background-color: white;
+    /* Softer, more modern corners */
+    border-radius: 1rem;
+    /* A more diffused, layered shadow for depth */
+    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 5px 15px -3px rgba(0, 0, 0, 0.07);
+    border: 1px solid #e2e8f0;
+}
+
+/* --- Title --- */
+.title {
+    margin-top: 0.5rem;
+    text-align: center;
+    /* Slightly larger and bolder for impact */
+    font-size: 2.25rem;
+    font-weight: 700;
+    color: #1a202c;
+    letter-spacing: -0.025em;
+}
+
+/* --- Form Layout --- */
+.form {
+    margin-top: 2rem;
+}
+
+/* --- Error Messages --- */
+.error {
+    background-color: #fff5f5;
+    border: 1px solid #fecaca;
+    color: #ef4444;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    margin-bottom: 1.5rem;
+    font-weight: 500;
+}
+
+/* --- Input Grouping --- */
+.inputGroup {
+    margin-bottom: 1rem;
+}
+
+/* --- Labels --- */
+.label {
+    display: block;
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: #4a5568;
+    margin-bottom: 0.5rem;
+}
+
+/* --- Input Fields --- */
+.input {
+    display: block;
+    width: 100%;
+    padding: 0.75rem 1rem;
+    border: 1px solid #cbd5e0;
+    border-radius: 0.5rem;
+    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+    transition: border-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+.input:focus {
+    outline: none;
+    /* A professional focus color */
+    border-color: #4c51bf;
+    /* A subtle inner glow effect */
+    box-shadow: 0 0 0 4px rgba(76, 81, 191, 0.1);
+}
+
+/* --- Submit Button --- */
+.button {
+    position: relative;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding: 0.75rem 1.5rem;
+    border: 1px solid transparent;
+    font-size: 1rem;
+    font-weight: 600;
+    border-radius: 0.5rem;
+    color: white;
+    /* A rich, professional button color */
+    background-color: #4c51bf;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.button:hover {
+    background-color: #3f479e;
+    transform: translateY(-2px); /* Subtle lift effect */
+}
+
+.button:focus {
+    outline: none;
+    box-shadow: 0 0 0 4px rgba(76, 81, 191, 0.25);
+}
+
+.button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+/* --- Success Message --- */
+.message {
+    background-color: #f0fdf4;
+    border: 1px solid #bbf7d0;
+    color: #16a34a;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    margin-top: 1.5rem;
+    font-weight: 500;
+}
+
+/* --- Sign-up Link --- */
+.signupLink {
+    text-align: center;
+    margin-top: 1.5rem;
+}
+
+.signupLink a {
+    color: #4c51bf;
+    font-size: 0.875rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.signupLink a:hover {
+    color: #3f479e;
+    text-decoration: underline;
+}
